@@ -13,9 +13,9 @@ import org.springframework.security.web.SecurityFilterChain;
  * Microservicio: catalogo
  *
  * Reglas de autorización:
- *  - GET  /libros/**                    -> cualquier usuario autenticado (ADMIN, BIBLIOTECARIO o USUARIO)
- *  - PUT  /libros/{id}/disponibilidad   -> solo ADMIN o BIBLIOTECARIO
- *  - Swagger / H2 (desarrollo)          -> público
+ *  - GET  /libros/**                   
+ *  - PUT  /libros/{id}/disponibilidad  
+ *  - Swagger / H2 (desarrollo)          
  */
 @Configuration
 @EnableMethodSecurity
