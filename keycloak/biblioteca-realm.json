@@ -1,0 +1,102 @@
+{
+  "realm": "biblioteca",
+  "enabled": true,
+  "sslRequired": "external",
+  "registrationAllowed": false,
+  "accessTokenLifespan": 300,
+  "roles": {
+    "realm": [
+      { "name": "ADMIN", "description": "Administrador del sistema de biblioteca, acceso total" },
+      { "name": "BIBLIOTECARIO", "description": "Gestiona catálogo, préstamos, devoluciones y usuarios" },
+      { "name": "USUARIO", "description": "Lector de la biblioteca, acceso de solo lectura al catálogo" }
+    ]
+  },
+  "clients": [
+    {
+      "clientId": "biblioteca-app",
+      "name": "Cliente para pruebas (Postman / curl / Swagger)",
+      "enabled": true,
+      "publicClient": true,
+      "protocol": "openid-connect",
+      "standardFlowEnabled": true,
+      "directAccessGrantsEnabled": true,
+      "serviceAccountsEnabled": false,
+      "redirectUris": ["*"],
+      "webOrigins": ["*"]
+    },
+    {
+      "clientId": "usuario-service",
+      "name": "Recurso protegido: microservicio-usuarios",
+      "enabled": true,
+      "publicClient": false,
+      "bearerOnly": true,
+      "protocol": "openid-connect",
+      "secret": "usuario-service-secret"
+    },
+    {
+      "clientId": "catalogo-service",
+      "name": "Recurso protegido: microservicio-catalogo",
+      "enabled": true,
+      "publicClient": false,
+      "bearerOnly": true,
+      "protocol": "openid-connect",
+      "secret": "catalogo-service-secret"
+    },
+    {
+      "clientId": "circulacion-service",
+      "name": "Recurso protegido: microservicio-circulacion",
+      "enabled": true,
+      "publicClient": false,
+      "bearerOnly": true,
+      "protocol": "openid-connect",
+      "secret": "circulacion-service-secret"
+    },
+    {
+      "clientId": "notificacion-service",
+      "name": "Recurso protegido: microservicio-notificacion",
+      "enabled": true,
+      "publicClient": false,
+      "bearerOnly": true,
+      "protocol": "openid-connect",
+      "secret": "notificacion-service-secret"
+    }
+  ],
+  "users": [
+    {
+      "username": "admin1",
+      "enabled": true,
+      "firstName": "Ana",
+      "lastName": "Administradora",
+      "email": "admin1@biblioteca.com",
+      "emailVerified": true,
+      "credentials": [
+        { "type": "password", "value": "Admin123*", "temporary": false }
+      ],
+      "realmRoles": ["ADMIN"]
+    },
+    {
+      "username": "bibliotecario1",
+      "enabled": true,
+      "firstName": "Beto",
+      "lastName": "Bibliotecario",
+      "email": "bibliotecario1@biblioteca.com",
+      "emailVerified": true,
+      "credentials": [
+        { "type": "password", "value": "Biblio123*", "temporary": false }
+      ],
+      "realmRoles": ["BIBLIOTECARIO"]
+    },
+    {
+      "username": "usuario1",
+      "enabled": true,
+      "firstName": "Uriel",
+      "lastName": "Usuario",
+      "email": "usuario1@biblioteca.com",
+      "emailVerified": true,
+      "credentials": [
+        { "type": "password", "value": "Usuario123*", "temporary": false }
+      ],
+      "realmRoles": ["USUARIO"]
+    }
+  ]
+}
